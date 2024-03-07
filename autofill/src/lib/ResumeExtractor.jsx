@@ -108,59 +108,111 @@ const ResumeExtractor = ({ setFormData }) => {
     const extractAddress = (text) => {
         // const locationRegex = /([A-Z][a-zA-Z]+);
         const locationRegex = /([A-Z][a-zA-Z]+) \|/;
-        const location = text.match(locationRegex)[1];
-        return location
+
+        try {
+            const location = text.match(locationRegex)[1];
+            return location
+        } catch (e) {
+            return null;
+        }
     };
 
 
     function extractEmail(text) {
-        const emailRegex = /\b[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Z|a-z]{2,}\b/;
-        const emailMatch = text.match(emailRegex);
-        return emailMatch ? emailMatch[0] : null;
+
+        try {
+
+            const emailRegex = /\b[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Z|a-z]{2,}\b/;
+            const emailMatch = text.match(emailRegex);
+
+            console.log(emailMatch[0]);
+            return emailMatch ? emailMatch[0] : null;
+        } catch (e) {
+            return null;
+        }
     }
 
     function extractContact(text) {
 
-        const phoneRegex = /(?:(?:\+|0{0,2})91(\s*[\-]\s*)?|[0]?)?[6789]\d{9}/g;
-        const phones = text.match(phoneRegex);
-        return phones ? phones[0] : null;
+        try {
+            const phoneRegex = /(?:(?:\+|0{0,2})91(\s*[\-]\s*)?|[0]?)?[6789]\d{9}/g;
+            const phones = text.match(phoneRegex);
+            return phones ? phones[0] : null;
+        } catch (e) {
+            return null;
+        }
 
     }
 
     function extractSummary(text) {
-        const summaryRegex = /SummaRy\/Objective([\s\S]+?)Education/;
-        const summaryMatch = text.match(summaryRegex);
-        return summaryMatch ? summaryMatch[1].trim() : null;
+
+        try {
+
+            const summaryRegex = /SummaRy\/Objective([\s\S]+?)Education/;
+            const summaryMatch = text.match(summaryRegex);
+            return summaryMatch ? summaryMatch[1 || 0].trim() : null;
+        } catch (e) {
+            return null;
+        }
     }
 
     function extractEducation(text) {
-        const educationRegex = /Education([\s\S]+?)SKills/;
-        const educationMatch = text.match(educationRegex);
-        return educationMatch ? educationMatch[1].trim() : null;
+
+        try {
+
+            const educationRegex = /Education([\s\S]+?)SKills/;
+            const educationMatch = text.match(educationRegex);
+            return educationMatch ? educationMatch[1 || 0].trim() : null;
+        } catch (e) {
+            return null;
+        }
     }
 
     function extractSkills(text) {
-        const skillsRegex = /SKills([\s\S]+?)WoRK ExpeRience/;
-        const skillsMatch = text.match(skillsRegex);
-        return skillsMatch ? skillsMatch[1].trim() : null;
+
+        try {
+            const skillsRegex = /SKills([\s\S]+?)WoRK ExpeRience/;
+            const skillsMatch = text.match(skillsRegex);
+            return skillsMatch ? skillsMatch[1].trim() : null;
+        } catch (e) {
+            return null;
+        }
     }
 
     function extractExperience(text) {
-        const experienceRegex = /WoRK ExpeRience([\s\S]+?)Achievements/;
-        const experienceMatch = text.match(experienceRegex);
-        return experienceMatch ? experienceMatch[1].trim() : null;
+
+        try {
+
+            const experienceRegex = /WoRK ExpeRience([\s\S]+?)Achievements/;
+            const experienceMatch = text.match(experienceRegex);
+            return experienceMatch ? experienceMatch[1].trim() : null;
+        } catch (e) {
+            return null;
+        }
     }
 
     function extractAchievements(text) {
-        const achievementsRegex = /Achievements([\s\S]+?)PRojects/;
-        const achievementsMatch = text.match(achievementsRegex);
-        return achievementsMatch ? achievementsMatch[1].trim() : null;
+
+        try {
+
+            const achievementsRegex = /Achievements([\s\S]+?)PRojects/;
+            const achievementsMatch = text.match(achievementsRegex);
+            return achievementsMatch ? achievementsMatch[1].trim() : null;
+        } catch (e) {
+            return null;
+        }
     }
 
     function extractProjects(text) {
-        const projectsRegex = /PRojects([\s\S]+)/;
-        const projectsMatch = text.match(projectsRegex);
-        return projectsMatch ? projectsMatch[1].trim() : null;
+
+        try {
+
+            const projectsRegex = /PRojects([\s\S]+)/;
+            const projectsMatch = text.match(projectsRegex);
+            return projectsMatch ? projectsMatch[1].trim() : null;
+        } catch (e) {
+            return null;
+        }
     }
 
     return (

@@ -13,7 +13,8 @@ const Form = () => {
     education: '',
     skills: '',
     experience: '',
-    projects: ''
+    projects: '',
+    achievements: "",
   });
 
   // handle input change
