@@ -8,6 +8,8 @@ const port = 3000;
 
 const upload = multer({ dest: 'uploads/' });
 
+const fs = require("fs")
+
 // cores config
 app.use((req, res, next) => {
     res.setHeader('Access-Control-Allow-Origin', '*');
